@@ -1,4 +1,4 @@
-@import "tailwindcss";
+
 
 *{
   margin: 0;
@@ -9,6 +9,9 @@
 body{
   width: 100%;
   height: auto;
-  background-color: #CCCCCC !important;
-  /* filter: */
+  font-family: "'Inter', sans-serif" !important; 
+}
+
+a{
+  text-decoration: none !important;
 }

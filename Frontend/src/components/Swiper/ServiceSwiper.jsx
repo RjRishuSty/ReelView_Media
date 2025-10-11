@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HotelIcon from "@mui/icons-material/Hotel";
@@ -21,7 +21,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import ServiceCard from "../Cards/ServiceCard";
 
- const servicesCategories = [
+const servicesCategories = [
   {
     id: 1,
     label: "Hospital",
@@ -112,7 +112,7 @@ import ServiceCard from "../Cards/ServiceCard";
   },
   {
     id: 12,
-    label: "Beauty & Salon",
+    label: "Beauty ",
     numberOfPartner: 33,
     rating: 4.6,
     icon: <FaceRetouchingNaturalIcon sx={{ fontSize: 40, color: "#ec407a" }} />,
@@ -146,12 +146,24 @@ import ServiceCard from "../Cards/ServiceCard";
 
 const ServiceSwiper = () => {
   return (
-    <Container sx={{mb:10 }}>
+    <Container maxWidth="xl" sx={{ py: 5 }}>
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         spaceBetween={20}
-        slidesPerView={3}
+        slidesPerView={3.5}
         navigation
+        autoplay={{
+          delay: 2500, // time between slides (ms)
+          disableOnInteraction: false, // keeps autoplay even after user scrolls
+        }}
+        loop={true} // 👈 continuous loop
+        style={{ padding: "0px 50px " }}
+        breakpoints={{
+          320: { slidesPerView: 1 },
+          600: { slidesPerView: 2 },
+          960: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 },
+        }}
       >
         {servicesCategories.map((item) => (
           <SwiperSlide key={item.id}>

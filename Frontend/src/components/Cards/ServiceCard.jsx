@@ -13,6 +13,7 @@ const ServiceCard = ({ item }) => {
   return (
     <Card
       sx={{
+        border:'1px solid #ccc',
         width: "100%",
         p: 3,
         display: "flex",

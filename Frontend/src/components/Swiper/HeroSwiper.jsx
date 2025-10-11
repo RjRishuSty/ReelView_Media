@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography, useMediaQuery } from "@mui/material";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
@@ -58,6 +58,7 @@ const sliderData = [
 ];
 
 const HeroSwiper = () => {
+   const isTablet = useMediaQuery("(max-width:700px)");
   return (
     <Swiper
       // install Swiper modules
@@ -87,13 +88,13 @@ const HeroSwiper = () => {
               height: 600,
               objectFit: "cover",
               objectPosition: "start",
-              filter:'brightness(10%)'
+              filter:'brightness(50%)'
             }}
           />
           <Box
             sx={{
               position: "absolute",
-              width: "70%",
+              width: isTablet?'100%':"70%",
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
@@ -106,17 +107,17 @@ const HeroSwiper = () => {
             }}
           >
             <Typography
-              variant="h3"
+              variant={isTablet?"h4":"h3"}
               sx={{
                 textAlign: "center",
                 fontWeight: 900,
                 textTransform: "capitalize",
-                color:'#4700b3'
+                color:'secondary.main'
               }}
             >
               {item.heading}
             </Typography>
-            <Typography sx={{ textAlign: "center", fontSize:'1.5rem',fontWeight:600,color:'#fff',letterSpacing:1,wordSpacing:1 }}>
+            <Typography sx={{ textAlign: "center", fontSize:isTablet?"1rem":'1.5rem',fontWeight:600,color:'secondary.light',letterSpacing:1,wordSpacing:1 }}>
               {item.description}
             </Typography>
             <Button variant="contained" size="large" sx={{backgroundColor:'#4700b3',letterSpacing:1,wordSpacing:2}}>
