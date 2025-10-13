@@ -22,7 +22,7 @@ const theme = createTheme({
 
     },
     hover: {
-      main: '#98EECC', // hover color red
+      main: '#FFFFFF', // hover color red
     },
     active: {
       main: '#0000FF', // active color blue
@@ -47,7 +47,7 @@ const theme = createTheme({
           textTransform: 'none',
           fontWeight: 600,
           '&:hover': {
-            backgroundColor: '#FF0000', // hover red
+            backgroundColor: '#c3863c', // hover red
           },
           '&:active': {
             backgroundColor: '#0000FF', // active blue
@@ -61,7 +61,7 @@ const theme = createTheme({
           '& .MuiOutlinedInput-root': {
             borderRadius: '8px',
             '&:hover fieldset': {
-              borderColor: '#FF0000', // hover red
+              borderColor: '#c3863c', // hover red
             },
             '&.Mui-focused fieldset': {
               borderColor: '#7743DB', // primary focus

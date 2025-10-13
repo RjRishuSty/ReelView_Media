@@ -1,6 +1,6 @@
 import { Button, Typography } from "@mui/material";
-import { menuLinks } from "../objects/menuLinks";
 import { useLocation, Link } from "react-router-dom";
+import {menuLinks} from '../data/menuLinksData';
 
 const MenuLinks = () => {
   const location = useLocation();

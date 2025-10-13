@@ -71,7 +71,7 @@ const Header = () => {
                 variant="contained"
                 sx={{
                   textTransform: "capitalize",
-                  bgcolor: "#ccc",
+                  bgcolor: "#fff",
                   color: "#5200cc",
                   fontWeight: 800,
                   ml: 5,

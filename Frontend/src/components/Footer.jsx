@@ -1,6 +1,8 @@
 import {Box, Container, Divider, Grid, Stack, Typography} from '@mui/material';
 import Logo from './Logo';
 import MenuLinks from './MenuLinks';
+import SocialMediaIcons from './SocialMediaIcons ';
+import { center } from '../styles/flexStyles';
 
 const Footer = () => {
   return (
@@ -24,12 +26,12 @@ const Footer = () => {
       </Container>
       <Divider color="#ccc"/>
       <Container sx={{p:2}}>
-        <Grid container>
-          <Grid size={{xs:12,sm:12,md:5}}>
+        <Grid container sx={{}}>
+          <Grid size={{xs:12,sm:12,md:5}} sx={{...center}}>
             <Typography variant='title1' sx={{color:'#fff'}}> © {new Date().getFullYear()} ReelView Media All rights reserved.</Typography>
           </Grid>
           <Grid size={{xs:12,sm:12,md:7}} sx={{display:'flex',justifyContent:'end',alignItems:'center'}}>
-            <Typography variant='title1' sx={{color:'#fff'}}> Socal Media Icon</Typography>
+          <SocialMediaIcons/>
           </Grid>
         </Grid>
       </Container>

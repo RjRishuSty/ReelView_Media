@@ -1,10 +1,8 @@
-
-
 export const menuLinks = [
   {
     id: 1,
     name: "Home",
-    path: "/", 
+    path: "/",
   },
   {
     id: 2,
@@ -16,5 +14,4 @@ export const menuLinks = [
     name: "Contact",
     path: "/contact",
   },
-  
 ];

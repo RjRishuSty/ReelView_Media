@@ -1,5 +1,3 @@
-import { Container } from "@mui/material";
-import { Autoplay, Navigation } from "swiper/modules";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HotelIcon from "@mui/icons-material/Hotel";
@@ -15,13 +13,9 @@ import FaceRetouchingNaturalIcon from "@mui/icons-material/FaceRetouchingNatural
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import MovieIcon from "@mui/icons-material/Movie";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import ServiceCard from "../Cards/ServiceCard";
 
-const servicesCategories = [
+
+export const servicesCategories = [
   {
     id: 1,
     label: "Hospital",
@@ -143,36 +137,3 @@ const servicesCategories = [
     description: "Creating viral content for music, film, and media brands.",
   },
 ];
-
-const ServiceSwiper = () => {
-  return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        spaceBetween={20}
-        slidesPerView={3.5}
-        navigation
-        autoplay={{
-          delay: 2500, // time between slides (ms)
-          disableOnInteraction: false, // keeps autoplay even after user scrolls
-        }}
-        loop={true} // 👈 continuous loop
-        style={{ padding: "0px 50px " }}
-        breakpoints={{
-          320: { slidesPerView: 1 },
-          600: { slidesPerView: 2 },
-          960: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
-        }}
-      >
-        {servicesCategories.map((item) => (
-          <SwiperSlide key={item.id}>
-            <ServiceCard item={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Container>
-  );
-};
-
-export default ServiceSwiper;

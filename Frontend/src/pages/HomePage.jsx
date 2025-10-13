@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import HeroSwiper from "../components/Swiper/HeroSwiper";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import ServiceSwiper from "../components/Swiper/ServiceSwiper";
-import AboutUsImages from "../components/AboutUsImages";
+import CustomSlider from "../components/Swiper/CustomSlider";
 import bgImg1 from "../assets/bg.png";
 import bgImg2 from "../assets/bg2.png";
 import { center } from "../styles/flexStyles";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import AboutSection from "../components/AboutSection";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 const HomePage = () => {
   return (
@@ -29,50 +30,11 @@ const HomePage = () => {
           We provide a wide rang of reliable and verified services for personal,
           professional and community needs.
         </Typography>
-        <ServiceSwiper />
+        <CustomSlider useIn='service' />
       </Box>
 
       {/* TODO: About us */}
-      <Container component="section" sx={{ mt: -2, mb: 9 }}>
-        <Grid container rowSpacing={2} columnSpacing={3}>
-          <Grid size={{ xs: 12, sm: 12, md: 5 }}>
-            <AboutUsImages />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 12, md: 7 }}>
-            <Box sx={{ p: 2 }}>
-              <Typography
-                variant="h5"
-                gutterBottom
-                sx={{ textTransform: "uppercase", fontWeight: 700 }}
-              >
-                ABOUT OUR COMPANY
-              </Typography>
-              <Typography gutterBottom variant="body1">
-                We are a one-stop platform dedicated to connecting people with
-                all types of essential services—quickly, reliably, and locally.
-                Whether you're planning a wedding, seeking medical help, looking
-                for legal support, or just need everyday services like a general
-                store or electrician—we bring everything under one roof.
-              </Typography>
-              <Typography gutterBottom variant="body1">
-                Our mission is to simplify lives by bridging the gap between
-                service providers and the people who need them. With verified
-                listings, user-friendly access, and a commitment to quality, we
-                ensure that every need—from the smallest to the most critical—is
-                just a few clicks away.
-              </Typography>
-              <Button
-                component={Link}
-                to="/about"
-                variant="contained"
-                sx={{ mt: 2 }}
-              >
-                Learn More
-              </Button>
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
+      <AboutSection/>
 
       {/* TODO:  */}
       <Stack sx={{ bgcolor: "primary.light", py: 10 }}>
@@ -104,7 +66,13 @@ const HomePage = () => {
                   like plumbing and electrical work to personal services like
                   photography and tutoring.
                 </Typography>
-                <Button variant="contained">Join </Button>
+                <Button
+                  variant="contained"
+                  sx={{ mt: 2 }}
+                  startIcon={<TrendingUpIcon />}
+                >
+                  Start Growing{" "}
+                </Button>
               </Box>
             </Grid>
             <Grid
@@ -121,6 +89,27 @@ const HomePage = () => {
           </Grid>
         </Container>
       </Stack>
+
+    
+      {/* TODO: Review ..... */}
+      <Container sx={{ py:10}}>
+        <Typography
+          variant="h4"
+          sx={{ color: "text.main", fontWeight: 700, textAlign: "center" }}
+        >
+          Genuine reviews from Customers
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ color: "text.light", textAlign: "center" }}
+        >
+          Each listing is designed to be clear and concise, providing customers
+        </Typography>
+        <CustomSlider useIn='review'/>
+      </Container>
+
+        {/* TODO: Why Choose us.............. */}
+      <WhyChooseUs/>
     </React.Fragment>
   );
 };
