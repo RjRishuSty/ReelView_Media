@@ -3,7 +3,6 @@ import {
   Box,
   Button,
   IconButton,
-  Stack,
   Toolbar,
   useMediaQuery,
 } from "@mui/material";
@@ -19,7 +18,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [openSideBar, setOpenSideBar] = useState(false);
 
-  // Detect scroll
+  // Detect scroll...........
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -41,44 +40,36 @@ const Header = () => {
     <AppBar
       position="sticky"
       sx={{
-        bgcolor: scrolled ? "primary.main" : "primary.main",
-        backdropFilter: scrolled ? "blur(10px)" : "none",
-        transition: "background-color 0.3s ease, padding 0.3s ease",
+        boxShadow: scrolled?"black":"none",
+        bgcolor: scrolled ? "secondary.main" : "primary.main",
+        transition: "background-color 0.5s ease, padding 0.5s ease",
         padding: scrolled ? "0.5rem 0" : "0.3rem 0",
       }}
     >
       <Toolbar>
-        <Logo />
+        <Logo scrolled={scrolled} />
 
         <Box sx={{ marginLeft: "auto" }}>
           {isTablet ? (
-            <IconButton
-              onClick={handleOpenSidebar}
-              sx={{
-                backgroundColor: "#f0e6ff",
-                "&:hover": { backgroundColor: "transparent" },
-              }}
-            >
-              <MenuTwoToneIcon
-                fontSize="large"
-                sx={{ color: "#5200cc", "&:hover": { color: "#fff" } }}
-              />
+            <IconButton onClick={handleOpenSidebar}>
+              <MenuTwoToneIcon fontSize="large" sx={{}} />
             </IconButton>
           ) : (
             <>
-              <MenuLinks />
+              <MenuLinks scrolled={scrolled} />
               <Button
-                variant="contained"
+                variant={scrolled?"contained":"outlined"}
                 sx={{
                   textTransform: "capitalize",
-                  bgcolor: "#fff",
-                  color: "#5200cc",
                   fontWeight: 800,
                   ml: 5,
-                  transition: "transform 0.2s ease-in-out",
-                  "&:hover": {
+                  border: !scrolled&&"2px solid #fff",
+                  color: "#fff",
+                  transition: "transform 0.9s ease-in-out",
+                  "&:hover":scrolled ?{bgcolor:"transparent",border:'2px solid #2b2b81',color:'primary.main'}: {
                     transform: "scale(1.1)",
                     bgcolor: "#fff",
+                    color: "primary.main",
                   },
                 }}
                 startIcon={<CallTwoToneIcon />}

@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSwiper from "../components/Swiper/HeroSwiper";
+import HeroSection from "../components/HeroSection";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import CustomSlider from "../components/Swiper/CustomSlider";
 import bgImg1 from "../assets/bg.png";
@@ -8,11 +8,13 @@ import { center } from "../styles/flexStyles";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import AboutSection from "../components/AboutSection";
 import WhyChooseUs from "../components/WhyChooseUs";
+import { visionData } from "../data/visionData";
+import VisionCard from "../components/Cards/VisionCard";
 
 const HomePage = () => {
   return (
     <React.Fragment>
-      <HeroSwiper />
+      <HeroSection />
       {/* TODO: Explore our services */}
       <Box component="section" sx={{ py: 5 }}>
         <Typography
@@ -30,14 +32,11 @@ const HomePage = () => {
           We provide a wide rang of reliable and verified services for personal,
           professional and community needs.
         </Typography>
-        <CustomSlider useIn='service' />
+        <CustomSlider useIn="service" />
       </Box>
 
-      {/* TODO: About us */}
-      <AboutSection/>
-
-      {/* TODO:  */}
-      <Stack sx={{ bgcolor: "primary.light", py: 10 }}>
+      {/* TODO: Add Services & Grow your */}
+      <Stack sx={{  }}>
         <Container sx={{}}>
           <Grid container rowGap={2} columnSpacing={3}>
             <Grid size={{ xs: 12, sm: 12, md: 8 }} sx={{ ...center }}>
@@ -78,21 +77,61 @@ const HomePage = () => {
             <Grid
               size={{ xs: 12, sm: 12, md: 4 }}
               sx={{
+                // border:'2px solid red',
+                minHeight:550,
                 backgroundImage: `url(${bgImg1})`,
                 backgroundRepeat: "no-repeat",
                 ...center,
                 backgroundPosition: "right center",
+                backgroundSize:'cover'
               }}
             >
-              <Box component="img" src={bgImg2} />
+              <Box component="img" src={bgImg2} sx={{}} />
             </Grid>
           </Grid>
         </Container>
       </Stack>
 
-    
-      {/* TODO: Review ..... */}
-      <Container sx={{ py:10}}>
+      {/* TODO: Our vision */}
+
+      <Stack
+        sx={{
+          // border: "2px solid red",
+          background: "linear-gradient(135deg, #2b2b81 0%, #00e6e6 100%)",
+          py: 10,
+        }}
+      >
+        <Typography
+          gutterBottom
+          variant="h4"
+          sx={{
+            fontWeight: 700,
+            textAlign: "center",
+            color: "primary.contrastText",
+          }}
+        >
+          Our Vision & Mission
+        </Typography>
+        <Typography
+          gutterBottom
+          variant="body2"
+          sx={{ textAlign: "center", color: "primary.contrastText" }}
+        >
+          Transforming the way communities connect with essential services
+          through innovation, trust, and accessibility
+        </Typography>
+        <Grid container sx={{py:2,px:5,mt:5}} rowSpacing={2} columnSpacing={2}>
+         {visionData.map((item)=> <Grid size={{xs:12,sm:12,md:3}} key={item.id}>
+          <VisionCard item={item} />
+         </Grid>)}
+        </Grid>
+      </Stack>
+
+      {/* TODO: Why Choose us.............. */}
+      <WhyChooseUs />
+
+       {/* TODO: Review ..... */}
+      <Container maxWidth='xl' sx={{ py: 10 ,}}>
         <Typography
           variant="h4"
           sx={{ color: "text.main", fontWeight: 700, textAlign: "center" }}
@@ -105,11 +144,8 @@ const HomePage = () => {
         >
           Each listing is designed to be clear and concise, providing customers
         </Typography>
-        <CustomSlider useIn='review'/>
+        <CustomSlider useIn="review" />
       </Container>
-
-        {/* TODO: Why Choose us.............. */}
-      <WhyChooseUs/>
     </React.Fragment>
   );
 };

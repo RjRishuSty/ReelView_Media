@@ -11,72 +11,87 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React, { useState } from "react";
 import { serviceFeatures } from "../data/whyChooseUsData";
+import { center } from "../styles/flexStyles";
 
 const WhyChooseUs = () => {
-  const [expanded, setExpanded] = useState(serviceFeatures[0].id); // first open
+  const [expanded, setExpanded] = useState(serviceFeatures[0].id); 
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false); // only one open at a time
+    setExpanded(isExpanded ? panel : false); 
   };
   return (
     <Stack
       sx={{
-        position: "relative",
-        height: 'auto',
-        width: '100%',
+        // border: "2px solid red",
+        height: "auto",
+        width: "100%",
         overflow: "hidden",
-        color: "white", 
-        py:10,
-        mb:5
+        py: 10,
+        // bgcolor:'primary.light'
+        // backgroundImage:`url(https://img.freepik.com/premium-photo/blue-desktop-computer-with-blank-screen-sits-blue-surface-against-blue-background_14117-871334.jpg)`,
+        // backgroundRepeat:'no-repeat',
+        // backgroundSize:'cover',
+        // filter:'brightness(40%)'
       }}
     >
-      <Box
-        component="span"
-        sx={{
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: `url(https://t3.ftcdn.net/jpg/03/00/00/04/360_F_300000400_DNQp8NueAATe3LkIxPKxMBHHjjwNKPcO.jpg)`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          opacity: 0.9, 
-          zIndex: 0,
-          filter:'brightness(30%)'
-        }}
-      />
-      <Box sx={{ position: "relative", zIndex: 1, p: 2 }}>
-        <Typography
-          gutterBottom
-          variant="h4"
-          sx={{ fontWeight: 700, textAlign: "center", mb: 5 }}
-        >
-          Why Choose Us?
-        </Typography>
-            <Container maxWidth="md">
-                {serviceFeatures.map((feature) => (
+      <Container maxWidth="lg">
+        <Grid container rowSpacing={2} columnSpacing={3} sx={{ ...center }}>
+          <Grid size={{ xs: 12, sm: 12, md: 8 }}>
+          <Typography variant="body1" sx={{ color: "primary.main" }}>
+              Your Trusted Partner for Every Service Need
+            </Typography>
+            <Typography
+              gutterBottom
+              variant="h5"
+              sx={{ fontWeight: 700, textAlign: "start",textTransform:'uppercase' }}
+            >
+              Why Choose Us?
+            </Typography>
+            
+            <Typography
+              variant="body1"
+              sx={{ color: "text.light", width: "70%" }}
+            >
+              In a world full of options, finding reliable and quality services
+              shouldn't be a hassle. That's where we come in. We've built a
+              platform that puts trust, convenience, and quality at the
+              forefront of everything we do.
+            </Typography>
+            <Box
+              component="img"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=400&fit=crop"
+              sx={{
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+                borderRadius: 5,
+                mt:3
+              }}
+            />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 12, md: 4 }}>
+            {serviceFeatures.map((feature) => (
               <Accordion
                 key={feature.id}
                 expanded={expanded === feature.id}
                 onChange={handleChange(feature.id)}
-                sx={{ mb: 1, border: "1px solid #ccc" }}
+                sx={{ mb: 1, color:'primary.contrastText',bgcolor:'primary.main' }}
               >
                 <AccordionSummary
-                  expandIcon={<ExpandMoreIcon sx={{ color: "primary.main" }} />}
+                  expandIcon={<ExpandMoreIcon sx={{ color: "primary.contrastText" }} />}
                 >
-                  <Typography variant="body1" sx={{ fontWeight: 800, mb: 1 }}>
+                  <Typography variant="body2" sx={{  mb: 1 }}>
                     {feature.title}
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Typography variant="body2">{feature.description}</Typography>
+                  <Typography variant="caption">{feature.description}</Typography>
                 </AccordionDetails>
               </Accordion>
             ))}
-            </Container>
-      </Box>
+          </Grid>
+        </Grid>
+      </Container>
     </Stack>
   );
 };

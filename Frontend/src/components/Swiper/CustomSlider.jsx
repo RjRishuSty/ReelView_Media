@@ -14,6 +14,7 @@ import { aboutServiceData } from "../../data/aboutServiceData";
 const CustomSlider = ({ useIn }) => {
   const service = useIn === "service";
   const aboutService = useIn === "aboutService";
+  const review = useIn === "review";
   //BreakPoints..........
   const breakpoints = service||aboutService
     ? {
@@ -25,13 +26,14 @@ const CustomSlider = ({ useIn }) => {
     : {
         320: { slidesPerView: 1 },
         960: { slidesPerView: 2 },
+        1280: { slidesPerView: 3 },
       };
   return (
     <Container maxWidth="xl" sx={{ py: 5 }}>
       <Swiper
         className="customSlider"
         modules={[Navigation, Autoplay]}
-        spaceBetween={service ||aboutService? 20 : 80}
+        spaceBetween={service ||aboutService|| review? 20 : 80}
         slidesPerView={service || aboutService ? 3.5 : 2}
         navigation
         autoplay={

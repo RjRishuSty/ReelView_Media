@@ -10,11 +10,6 @@ export const serviceFeatures = [
     description: "From emergency needs to planned events, we cover every aspect of daily life."
   },
   {
-    id: 3,
-    title: "Local Focus",
-    description: "We prioritize connecting you with nearby service providers for quick and convenient access."
-  },
-  {
     id: 4,
     title: "User-Friendly Platform",
     description: "Easy-to-navigate interface that helps you find what you need in seconds."

@@ -14,7 +14,7 @@ export const reviews = [
     name: "Sophia Turner",
     title: "Green Cleaning",
     feedback:
-      "I love that they use eco-friendly products without compromising on cleanliness and care. Highly recommended!",
+      "I love that they use eco-friendly products without compromising on cleanliness and care!",
     rating: 5,
     img: "/images/user2.jpg",
     daysAgo: "5 Days Ago",

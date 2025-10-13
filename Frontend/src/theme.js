@@ -3,34 +3,38 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#7743DB', // fourth color
-      light: '#C3ACD0', // third color
+      main: '#2b2b81', 
+      light: '#00e6e6', 
       contrastText: '#FFFFFF',
     },
     secondary: {
-      main: '#c3863c', // second color
+      main: '#fff', 
       light:'#f7efe5',
       contrastText: '#000000',
     },
+    other:{
+      main:'#00cc00',
+    },
     background: {
-      default: '#FFFBF5', // first color
-      paper: '#FFFFFF',
+      default: '#fff', 
+      paper: '#2b2b81',
     },
     text:{
       main:'#000',
-      light:'#595959',
+      light:'#404040',
+      highlight:'#00e6e6'
 
     },
     hover: {
-      main: '#FFFFFF', // hover color red
+      main: '#f3b229', 
     },
     active: {
-      main: '#0000FF', // active color blue
+      main: '#0000FF', 
     },
   },
   typography: {
     fontFamily: "'Inter', sans-serif",
-    h1: { fontFamily: "'Poppins', sans-serif" },
+    h1: { fontFamily: "'Poppins', sans-serif",},
     h2: { fontFamily: "'Poppins', sans-serif" },
     h3: { fontFamily: "'Poppins', sans-serif" },
     h4: { fontFamily: "'Poppins', sans-serif" },
@@ -40,21 +44,22 @@ const theme = createTheme({
     body2: { fontFamily: "'Inter', sans-serif" },
   },
   components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-          textTransform: 'none',
-          fontWeight: 600,
-          '&:hover': {
-            backgroundColor: '#c3863c', // hover red
-          },
-          '&:active': {
-            backgroundColor: '#0000FF', // active blue
-          },
-        },
-      },
-    },
+    // MuiButton: {
+    //   styleOverrides: {
+    //     root: {
+    //       borderRadius: '8px',
+    //       bgco
+    //       textTransform: 'none',
+    //       fontWeight: 600,
+    //       '&:hover': {
+    //         backgroundColor: '#3ac379', // hover red
+    //       },
+    //       '&:active': {
+    //         backgroundColor: '#3ac379', // active blue
+    //       },
+    //     },
+    //   },
+    // },
     MuiTextField: {
       styleOverrides: {
         root: {

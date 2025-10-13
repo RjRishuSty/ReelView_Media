@@ -20,7 +20,7 @@ const ServiceCard = ({ item }) => {
         justifyContent: "center",
         alignItems: "center",
         filter: "brightness(100%)",
-        bgcolor: "#fff",
+        bgcolor: "background.default",
         cursor:'pointer',
         // 👇 smooth animation setup
         transition:

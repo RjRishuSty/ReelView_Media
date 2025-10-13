@@ -14,7 +14,8 @@ const AboutSection = () => {
         component="section"
         sx={{
           mb: 5,
-          bgcolor: "secondary.light",
+          background: "linear-gradient(135deg, #2b2b81 0%, #00e6e6 100%)",
+          boxShadow: "0px 0px 5px black",
           borderRadius: 5,
           py: !isAboutPage ? 10 : 5,
         }}
@@ -41,18 +42,30 @@ const AboutSection = () => {
               <Typography
                 variant="h6"
                 gutterBottom
-                sx={{ textTransform: "uppercase", fontWeight: 600 }}
+                sx={{
+                  color: "primary.main",
+                  textTransform: "uppercase",
+                  fontWeight: 600,
+                }}
               >
                 Who We Are
               </Typography>
-              <Typography gutterBottom variant="body1">
+              <Typography
+                gutterBottom
+                variant="body1"
+                sx={{ color: "text.light" }}
+              >
                 We are a one-stop platform dedicated to connecting people with
                 all types of essential services—quickly, reliably, and locally.
                 Whether you're planning a wedding, seeking medical help, looking
                 for legal support, or just need everyday services like a general
                 store or electrician—we bring everything under one roof.
               </Typography>
-              <Typography gutterBottom variant="body1">
+              <Typography
+                gutterBottom
+                variant="body1"
+                sx={{ color: "text.light" }}
+              >
                 Our mission is to simplify lives by bridging the gap between
                 service providers and the people who need them. With verified
                 listings, user-friendly access, and a commitment to quality, we
@@ -84,7 +97,14 @@ const AboutSection = () => {
                   component={Link}
                   to="/about"
                   variant="contained"
-                  sx={{ mt: 2 }}
+                  sx={{
+                    mt: 2,
+                    "&:hover": {
+                      border: "2px solid #2b2b81",
+                      bgcolor: "transparent",
+                      color: "primary.main",
+                    },
+                  }}
                 >
                   Learn More
                 </Button>
@@ -93,7 +113,6 @@ const AboutSection = () => {
           </Grid>
         </Grid>
       </Container>
-      
     </>
   );
 };

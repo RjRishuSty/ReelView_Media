@@ -8,7 +8,7 @@ import { center } from "../styles/flexStyles";
 
 const ContactPage = () => {
   return (
-    <Stack sx={{ py: 10 }}>
+    <Stack sx={{ pt: 10 }}>
       <Container sx={{ ...center, flexDirection: "column",boxShadow:'0px 0px 5px black',borderRadius:5,p:4 }}>
         <Typography
           gutterBottom

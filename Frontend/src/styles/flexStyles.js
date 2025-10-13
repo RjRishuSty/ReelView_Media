@@ -11,6 +11,11 @@ export const center = {
   justifyContent: "center",
   alignItems: "center",
 };
+export const startCenter = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "start",
+};
 
 export const spaceBetween = {
   display: "flex",

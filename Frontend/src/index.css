@@ -8,7 +8,7 @@ body {
   width: 100%;
   height: auto;
   font-family: "'Inter', sans-serif" !important;
-  /* filter: ; */
+  /* filter: brightness() */
 }
 
 a {
