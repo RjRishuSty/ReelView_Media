@@ -1,119 +1,143 @@
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React from "react";
-import AboutUsImages from "./AboutUsImages";
-import { Link, useLocation } from "react-router-dom";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CustomSlider from "./Swiper/CustomSlider";
+import { achievementData } from "../data/aboutAchievementData";
+import { center } from "../styles/flexStyles";
 
 const AboutSection = () => {
-  const location = useLocation();
-  const isAboutPage = location.pathname === "/about";
   return (
-    <>
-      <Container
-        component="section"
-        sx={{
-          mb: 5,
-          background: "linear-gradient(135deg, #2b2b81 0%, #00e6e6 100%)",
-          boxShadow: "0px 0px 5px black",
-          borderRadius: 5,
-          py: !isAboutPage ? 10 : 5,
-        }}
+    <Container sx={{ mt: 10, mb: 10, ...center, flexDirection: "column" }}>
+      <Typography
+        gutterBottom
+        variant="h3"
+        sx={{ fontWeight: 700, textAlign: "center" }}
       >
-        {!isAboutPage && (
+        About Us
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ width: "70%", textAlign: "center", mb: 5 }}
+      >
+        We are dedicated to connecting people with reliable local services that
+        simplify everyday life. Our mission is to make access to trusted
+        professionals easier, faster, and more transparent for everyone.
+      </Typography>
+      <Grid container rowSpacing={3} columnSpacing={4}>
+        <Grid
+          size={{ xs: 12, sm: 12, md: 7 }}
+          sx={{ boxShadow: "0px 0px 5px black", p: 5, borderRadius: 2 }}
+        >
           <Typography
             gutterBottom
-            variant="h4"
+            variant="body1"
             sx={{
-              fontWeight: 700,
-              textAlign: "center",
+              fontWeight: 200,
               textTransform: "capitalize",
+              color: "primary.main",
             }}
           >
-            About us
+            How it started
           </Typography>
-        )}
-        <Grid container rowSpacing={2} columnSpacing={3} sx={{ mt: 3 }}>
-          <Grid size={{ xs: 12, sm: 12, md: 5 }}>
-            <AboutUsImages />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 12, md: 7 }}>
-            <Box sx={{ p: 2 }}>
-              <Typography
-                variant="h6"
-                gutterBottom
-                sx={{
-                  color: "primary.main",
-                  textTransform: "uppercase",
-                  fontWeight: 600,
-                }}
-              >
-                Who We Are
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="body1"
-                sx={{ color: "text.light" }}
-              >
-                We are a one-stop platform dedicated to connecting people with
-                all types of essential services—quickly, reliably, and locally.
-                Whether you're planning a wedding, seeking medical help, looking
-                for legal support, or just need everyday services like a general
-                store or electrician—we bring everything under one roof.
-              </Typography>
-              <Typography
-                gutterBottom
-                variant="body1"
-                sx={{ color: "text.light" }}
-              >
-                Our mission is to simplify lives by bridging the gap between
-                service providers and the people who need them. With verified
-                listings, user-friendly access, and a commitment to quality, we
-                ensure that every need—from the smallest to the most critical—is
-                just a few clicks away.
-              </Typography>
-              {isAboutPage ? (
-                <>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    sx={{ fontWeight: 600, mt: 3 }}
-                  >
-                    Our Vision
-                  </Typography>
-                  <Typography
-                    gutterBottom
-                    variant="body1"
-                    sx={{ color: "text.main" }}
-                  >
-                    To become the most trusted and comprehensive local services
-                    platform, empowering communities by making quality services
-                    accessible to everyone, everywhere.
-                  </Typography>
-                </>
-              ) : (
-                <Button
-                  endIcon={<ArrowForwardIcon />}
-                  component={Link}
-                  to="/about"
-                  variant="contained"
-                  sx={{
-                    mt: 2,
-                    "&:hover": {
-                      border: "2px solid #2b2b81",
-                      bgcolor: "transparent",
-                      color: "primary.main",
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
-              )}
-            </Box>
-          </Grid>
+          <Typography
+            variant="h2"
+            sx={{
+              mt: 2.5,
+              fontWeight: 700,
+              textTransform: "capitalize",
+              color: "text.main",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+            }}
+          >
+            Your Trusted Partner{" "}
+            <Typography
+              component="span"
+              variant="h2"
+              sx={{ fontWeight: 700, color: "primary.main" }}
+            >
+              {" "}
+              for Every Service Need
+            </Typography>
+          </Typography>
+          <Typography variant="body1" sx={{ color: "text.light", mt: 5 }}>
+            We are a comprehensive service provider dedicated to simplifying
+            your life by offering solutions across multiple domains under one
+            roof. From healthcare facilities to hospitality, technology support
+            to legal services, we've built a diverse portfolio designed to meet
+            the everyday needs of individuals and businesses alike.
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mt: 3, color: "text.light", fontWeight: 500 }}
+          >
+            Our mission is simple: to be the single point of contact for all
+            your service requirements, delivering quality, reliability, and
+            convenience in everything we do
+          </Typography>
         </Grid>
-      </Container>
-    </>
+        <Grid size={{ xs: 12, sm: 12, md: 5 }}>
+          <Box sx={{ position: "relative" }}>
+            <Box
+              component="img"
+              src="https://images.pexels.com/photos/7682351/pexels-photo-7682351.jpeg"
+              sx={{
+                width: "100%",
+                height: 300,
+                borderRadius: 5,
+                objectFit: "cover",
+                objectPosition: "0px 30%",
+              }}
+            />
+            <Grid container columnSpacing={2} rowSpacing={1} sx={{ mt: 3 }}>
+              {achievementData.map((item) => (
+                <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+                  <Card
+                    key={item.id}
+                    sx={{
+                      bgcolor: "primary.light",
+                      cursor: "pointer",
+                      transition: "all 0.9s ease-in-out",
+                      "&:hover": {
+                        bgcolor: "primary.main",
+                        color: "primary.contrastText",
+                      },
+                    }}
+                  >
+                    <CardContent>
+                      <Typography
+                        variant="h4"
+                        gutterBottom
+                        sx={{
+                          fontWeight: 700,
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)",
+                        }}
+                      >
+                        {item.number}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+                        }}
+                      >
+                        {item.label}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

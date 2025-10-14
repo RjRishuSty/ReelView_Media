@@ -2,8 +2,8 @@
 
 export const flexStart = {
   display: "flex",
-  justifyContent: "flex-start",
-  alignItems: "flex-start",
+  justifyContent: "start",
+  alignItems: "center",
 };
 
 export const center = {

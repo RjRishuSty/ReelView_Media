@@ -10,21 +10,21 @@ const BasicBreadcrumbs = ({ pathname }) => {
     <Breadcrumbs
       separator={<NavigateNextIcon fontSize="large" />}
       aria-label="breadcrumb"
-      sx={{ ...center,py:5,bgcolor:'primary.light' }}
+      sx={{ ...center,py:2}}
     >
       <Typography
-        variant="h4"
+        variant="h6"
         component={Link}
-        sx={{ fontWeight: 700 }}
+        sx={{ fontWeight: 600 }}
         color="inherit"
         to="/"
       >
         Home
       </Typography>
       <Typography
-        variant="h4"
+        variant="h6"
         color="text.primary"
-        sx={{ textTransform: "capitalize", fontWeight: 700 }}
+        sx={{ textTransform: "capitalize", fontWeight: 600 }}
       >
         {path}
       </Typography>

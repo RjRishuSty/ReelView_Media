@@ -3,13 +3,22 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import React from "react";
 import InputForm from "../components/InputForm";
-import { Box, Typography } from "@mui/material";
-import { center } from "../styles/flexStyles";
+import { Box, Card, IconButton, Typography } from "@mui/material";
+import { center, flexStart } from "../styles/flexStyles";
+import { companyInfo } from "../data/companyInfoData";
 
 const ContactPage = () => {
   return (
     <Stack sx={{ pt: 10 }}>
-      <Container sx={{ ...center, flexDirection: "column",boxShadow:'0px 0px 5px black',borderRadius:5,p:4 }}>
+      <Container
+        sx={{
+          ...center,
+          flexDirection: "column",
+          boxShadow: "0px 0px 5px #2b2b81",
+          borderRadius: 5,
+          p: 4,
+        }}
+      >
         <Typography
           gutterBottom
           variant="h5"
@@ -32,8 +41,27 @@ const ContactPage = () => {
         <Grid container sx={{ width: "100%", mt: 3 }}>
           <Grid
             size={{ xs: 12, sm: 12, md: 5 }}
-            sx={{ border: "2px solid red" }}
-          ></Grid>
+            sx={{p:2,bgcolor:'transparent' }}
+          >
+            {companyInfo.map((item) => (
+              <React.Fragment key={item.id}>
+                <Card
+                  sx={{
+                    p:1,
+                    boxShadow:'none',
+                    border:'none',
+                   bgcolor:'transparent',
+                    ...flexStart,
+                  }}
+                >
+                  <IconButton>{item.icon}</IconButton>
+                  <Typography variant="body1" sx={{ fontWeight: 500,color:'text.main' }}>
+                    {item.value}
+                  </Typography>
+                </Card>
+              </React.Fragment>
+            ))}
+          </Grid>
           <Grid size={{ xs: 12, sm: 12, md: 7 }}>
             <InputForm />
           </Grid>
@@ -42,7 +70,7 @@ const ContactPage = () => {
       <Box
         sx={{
           width: "100%",
-          mt:10,
+          mt: 10,
           height: { xs: 300, md: 500 },
           borderTop: "1px solid #eee",
         }}
