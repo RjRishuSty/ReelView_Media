@@ -51,8 +51,8 @@ const Header = () => {
 
         <Box sx={{ marginLeft: "auto" }}>
           {isTablet ? (
-            <IconButton onClick={handleOpenSidebar}>
-              <MenuTwoToneIcon fontSize="large" sx={{}} />
+            <IconButton onClick={handleOpenSidebar} sx={{bgcolor:'#ccc'}}>
+              <MenuTwoToneIcon fontSize="medium" />
             </IconButton>
           ) : (
             <>

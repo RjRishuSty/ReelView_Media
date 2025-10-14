@@ -7,6 +7,7 @@ import {
   Container,
   Grid,
   Box,
+  useMediaQuery,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React, { useState } from "react";
@@ -15,6 +16,7 @@ import { center } from "../styles/flexStyles";
 
 const WhyChooseUs = () => {
   const [expanded, setExpanded] = useState(serviceFeatures[0].id); 
+  const isTablet = useMediaQuery("(max-width:650px)");
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false); 
@@ -22,22 +24,17 @@ const WhyChooseUs = () => {
   return (
     <Stack
       sx={{
-        // border: "2px solid red",
+        //  border: "2px solid red",
         height: "auto",
         width: "100%",
         overflow: "hidden",
         py: 10,
-        // bgcolor:'primary.light'
-        // backgroundImage:`url(https://img.freepik.com/premium-photo/blue-desktop-computer-with-blank-screen-sits-blue-surface-against-blue-background_14117-871334.jpg)`,
-        // backgroundRepeat:'no-repeat',
-        // backgroundSize:'cover',
-        // filter:'brightness(40%)'
       }}
     >
       <Container maxWidth="lg">
         <Grid container rowSpacing={2} columnSpacing={3} sx={{ ...center }}>
-          <Grid size={{ xs: 12, sm: 12, md: 8 }}>
-          <Typography variant="body1" sx={{ color: "primary.main" }}>
+          <Grid size={{ xs: 12, sm: 12, md: 8 }} sx={{}}>
+          <Typography gutterBottom variant="body1" sx={{fontWeight:700, color: "primary.main" }}>
               Your Trusted Partner for Every Service Need
             </Typography>
             <Typography
@@ -50,7 +47,7 @@ const WhyChooseUs = () => {
             
             <Typography
               variant="body1"
-              sx={{ color: "text.light", width: "70%" }}
+              sx={{ color: "text.light", width: isTablet?"100%":"70%",}}
             >
               In a world full of options, finding reliable and quality services
               shouldn't be a hassle. That's where we come in. We've built a

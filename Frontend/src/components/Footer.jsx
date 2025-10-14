@@ -17,7 +17,7 @@ const Footer = () => {
       <Container>
         <Grid container rowSpacing={4} columnSpacing={2}>
           <Grid
-            size={{ xs: 12, sm: 12, md: 4 }}
+            size={{ xs: 12, sm: 6, md: 4 }}
             sx={{
               p: 1,
               display: "flex",
@@ -46,10 +46,10 @@ const Footer = () => {
               store or electrician—we bring everything under one roof.
             </Typography>
           </Grid>
-          <Grid size={{ xs: 12, sm: 12, md: 4 }} sx={{ p: 1 }}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ p: 1 }}>
             <Typography
               variant="h5"
-              sx={{ fontWeight: "700", color: "text.main", textAlign: "center" }}
+              sx={{ fontWeight: "700", color: "text.main", textAlign: {xs:"start",sm:"center"} }}
             >
               Quick Links
             </Typography>
@@ -58,7 +58,7 @@ const Footer = () => {
                 mt: 3,
                 display: "flex",
                 justifyContent: "start",
-                alignItems: "center",
+                alignItems: {xs:'start',sm:"center"},
                 flexDirection: "column",
               }}
             >
@@ -71,21 +71,22 @@ const Footer = () => {
       <Divider color="#ccc" />
       <Container sx={{ p: 2 }}>
         <Grid container sx={{}}>
-          <Grid size={{ xs: 12, sm: 12, md: 5 }} sx={{ ...center }}>
-            <Typography variant="title1" sx={{ color: "#fff" }}>
-              {" "}
-              © {new Date().getFullYear()} ReelView Media All rights reserved.
-            </Typography>
-          </Grid>
           <Grid
-            size={{ xs: 12, sm: 12, md: 7 }}
+            size={{ xs: 12, sm: 6, md: 7 }}
             sx={{
               display: "flex",
-              justifyContent: "end",
+              justifyContent: {xs:"center",sm:"end",md:"end"},
               alignItems: "center",
+              mb:{xs:3}
             }}
           >
             <SocialMediaIcons />
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6, md: 5 }} sx={{ ...center }}>
+            <Typography variant="title1" sx={{ color: "text.main",}}>
+              {" "}
+              © {new Date().getFullYear()} ReelView Media All rights reserved.
+            </Typography>
           </Grid>
         </Grid>
       </Container>

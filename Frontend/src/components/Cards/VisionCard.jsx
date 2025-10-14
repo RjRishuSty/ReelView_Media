@@ -6,7 +6,7 @@ const VisionCard = ({ item }) => {
     <Card
       sx={{
         width: "100%",
-        minHeight: 400,
+        height:"100%",
         cursor: "pointer",
         bgcolor: `#fff`,
         boxShadow: "0px 0px 5px #2b2b81",
