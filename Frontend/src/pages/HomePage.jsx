@@ -134,8 +134,8 @@ const HomePage = () => {
           rowSpacing={2}
           columnSpacing={2}
         >
-          {visionData.map((item) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4,lg:3 }} key={item.id}>
+          {visionData.map((item,index) => (
+            <Grid size={{ xs: 12, sm: 6, md: 4,lg:3 }} key={index}>
               <VisionCard item={item} />
             </Grid>
           ))}

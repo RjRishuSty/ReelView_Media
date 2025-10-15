@@ -10,37 +10,39 @@ import { Link } from "react-router-dom";
 const socialLinks = [
   {
     name: "Facebook",
-    icon: <FacebookIcon />,
+    icon: <FacebookIcon fontSize="medium"/>,
     url: "https://facebook.com/",
     color: "#1877F2",
   },
   {
     name: "Instagram",
-    icon: <InstagramIcon />,
+    icon: <InstagramIcon fontSize="medium"/>,
     url: "https://instagram.com/",
     color: "#E1306C",
   },
   {
     name: "YouTube",
-    icon: <YouTubeIcon />,
+    icon: <YouTubeIcon fontSize="medium"/>,
     url: "https://youtube.com/",
     color: "#FF0000",
   },
   {
     name: "Twitter",
-    icon: <TwitterIcon />,
+    icon: <TwitterIcon fontSize="medium"/>,
     url: "https://twitter.com/",
     color: "#1DA1F2",
   },
   {
     name: "LinkedIn",
-    icon: <LinkedInIcon />,
+    icon: <LinkedInIcon fontSize="medium"/>,
     url: "https://linkedin.com/",
     color: "#0077B5",
   },
 ];
 
-const SocialMediaIcons = () => {
+const SocialMediaIcons = ({useIn}) => {
+  const sidebar = useIn === 'sidebar';
+  const footer = useIn === 'footer';
   return (
     <>
       {socialLinks.map((item) => (
@@ -50,6 +52,7 @@ const SocialMediaIcons = () => {
             to={item.url}
             target="_blank"
             sx={{
+              bgcolor:'#fff',
               color: item.color,
               mr:2,
               transition: "transform 0.3s ease",

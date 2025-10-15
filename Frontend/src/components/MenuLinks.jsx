@@ -2,9 +2,10 @@ import { Button, Typography } from "@mui/material";
 import { useLocation, Link } from "react-router-dom";
 import { menuLinks } from "../data/menuLinksData";
 
-const MenuLinks = ({ scrolled, useIn }) => {
+const MenuLinks = ({ scrolled, useIn, closeSidebar }) => {
   const location = useLocation();
   const footer = useIn === "footer";
+  const sidebar = useIn === "sidebar";
   return (
     <>
       {menuLinks.map((item) => {
@@ -14,7 +15,7 @@ const MenuLinks = ({ scrolled, useIn }) => {
             component={Link}
             to={item.path}
             key={item.id}
-            variant="body2"
+            variant="body1"
             sx={{
               mx: 1,
               color:
@@ -32,12 +33,16 @@ const MenuLinks = ({ scrolled, useIn }) => {
               fontWeight: isActive ? 700 : 600,
               fontSize: isActive ? "0.9rem" : "",
               letterSpacing: 1,
-              marginBottom: footer ? 2 : 0,
+              textAlign:'start',
+              marginBottom:sidebar  || footer ? 2 : 0,
               "&:hover": {
                 color: scrolled && isActive ? "#2b2b81" : "#000",
                 borderBottom: !isActive?"1px solid #2b2b81":"",
               }
             }}
+            onClick={() => {
+            if (useIn === "sidebar" && closeSidebar) closeSidebar();
+          }}
           >
             {item.name}
           </Typography>

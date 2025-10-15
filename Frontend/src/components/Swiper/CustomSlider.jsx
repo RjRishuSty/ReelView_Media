@@ -9,41 +9,53 @@ import { servicesCategories } from "../../data/servicesCategoriesData";
 import ReviewCard from "../Cards/ReviewCard";
 import { reviews } from "../../data/reviewsData";
 import AboutServiceCard from "../Cards/AboutServiceCard";
-import { aboutServiceData } from "../../data/aboutServiceData";
 
 const CustomSlider = ({ useIn }) => {
   const minLaptop = useMediaQuery("(max-width:1082px)");
   const isTablet = useMediaQuery("(max-width:700px)");
   const isMobile = useMediaQuery("(max-width:599px)");
+  const smallMobile = useMediaQuery("(max-width:405px)");
+  const otherPhone = useMediaQuery("(max-width:463px)");
   const service = useIn === "service";
   const aboutService = useIn === "aboutService";
   const review = useIn === "review";
   //BreakPoints..........
   const breakpoints =
-    service || aboutService 
+    service || aboutService
       ? {
-          
           320: { slidesPerView: 1 },
-          600: { slidesPerView: 2 },
-          960: { slidesPerView: 3 },
+          600: { slidesPerView: 1 },
+          960: { slidesPerView: aboutService?2:3 },
+          1063:{slidesPerView:aboutService?2:3},
           1280: { slidesPerView: 3 },
         }
       : {
           320: { slidesPerView: 1 },
-          600:{slidesPerView:1},
+          600: { slidesPerView: 1 },
           960: { slidesPerView: 2 },
           1280: { slidesPerView: 3 },
         };
   return (
-    <Container maxWidth="xl" sx={{ py: 5,height:review?'60vh':"auto" }}>
+    <Container
+      maxWidth="xl"
+      sx={{ py: 5, height:service?smallMobile?"50vh":"40vh": review ? "60vh" : aboutService ? "70vh" : "auto" }}
+    >
       <Swiper
         className="customSlider"
         modules={[Navigation, Autoplay]}
-        spaceBetween={service || aboutService || review ?isMobile?10: 20 :isTablet?10: 80}
+        spaceBetween={
+          service || aboutService || review
+            ? isMobile
+              ? 10
+              : 20
+            : isTablet
+            ? 10
+            : 80
+        }
         slidesPerView={service || aboutService ? 3.5 : 2}
         navigation
         autoplay={
-          service
+          service 
             ? {
                 delay: 2500,
                 disableOnInteraction: false,
@@ -51,36 +63,40 @@ const CustomSlider = ({ useIn }) => {
             : false
         }
         loop={true}
+        onSwiper={(swiper) => {
+          const el = swiper.el;
+          el.addEventListener("mouseenter", () => swiper.autoplay.stop());
+          el.addEventListener("mouseleave", () => swiper.autoplay.start());
+        }}
         style={{
-          padding: service||review
-            ? isMobile
-              ? "0px 20px"
-              : isTablet
-              ? "0px 0px"
-              : minLaptop
-              ? "0px 20px"
-              : "0px 50px "
-            : "10px 70px",
-            height:'100%',
+          padding:
+            service || review ||aboutService?
+            otherPhone?"0px"
+              :isMobile
+                ? "0px 20px"
+                : isTablet
+                ? "0px 0px"
+                : minLaptop
+                ? "0px 20px"
+                
+                : "0px 50px "
+              : "10px 70px",
+          height: "100%",
+
         }}
         breakpoints={breakpoints}
       >
-        {(service
-          ? servicesCategories
-          : aboutService
-          ? aboutServiceData
-          : reviews
-        ).map((item) => (
-          <SwiperSlide key={item.id}>
-            {service ? (
-              <ServiceCard item={item} />
-            ) : aboutService ? (
-              <AboutServiceCard item={item} />
-            ) : (
-               <ReviewCard item={item} />
-            )}
-          </SwiperSlide>
-        ))}
+        {(service || aboutService ? servicesCategories : reviews).map(
+          (item) => (
+            <SwiperSlide key={item.id}>
+              {service || aboutService ? (
+                <ServiceCard item={item} />
+              ) : (
+                <ReviewCard item={item} />
+              )}
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </Container>
   );

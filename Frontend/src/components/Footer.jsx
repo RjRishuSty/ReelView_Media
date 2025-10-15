@@ -5,13 +5,15 @@ import {
   Grid,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import Logo from "./Logo";
 import MenuLinks from "./MenuLinks";
 import SocialMediaIcons from "./SocialMediaIcons ";
-import { center } from "../styles/flexStyles";
+import { center, flexStart } from "../styles/flexStyles";
 
 const Footer = () => {
+  const isMobile = useMediaQuery("(max-width:600px)")
   return (
     <Stack sx={{ pt: 5, bgcolor: "#ccc" }}>
       <Container>
@@ -70,21 +72,17 @@ const Footer = () => {
       </Container>
       <Divider color="#ccc" />
       <Container sx={{ p: 2 }}>
-        <Grid container sx={{}}>
+        <Grid container rowSpacing={4} columnSpacing={2} sx={{}}>
           <Grid
             size={{ xs: 12, sm: 6, md: 7 }}
             sx={{
-              display: "flex",
-              justifyContent: {xs:"center",sm:"end",md:"end"},
-              alignItems: "center",
-              mb:{xs:3}
+             ...(isMobile?center:flexStart)
             }}
           >
             <SocialMediaIcons />
           </Grid>
           <Grid size={{ xs: 12, sm: 6, md: 5 }} sx={{ ...center }}>
             <Typography variant="title1" sx={{ color: "text.main",}}>
-              {" "}
               © {new Date().getFullYear()} ReelView Media All rights reserved.
             </Typography>
           </Grid>

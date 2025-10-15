@@ -3,20 +3,23 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import React from "react";
 import InputForm from "../components/InputForm";
-import { Box, Card, IconButton, Typography } from "@mui/material";
+import { Box, Card, Divider, IconButton, Typography, useMediaQuery } from "@mui/material";
 import { center, flexStart } from "../styles/flexStyles";
 import { companyInfo } from "../data/companyInfoData";
 
 const ContactPage = () => {
+  const laptop = useMediaQuery("(max-width:1228px)");
+  const isMobile = useMediaQuery("(max-width:500px)");
+
   return (
-    <Stack sx={{ pt: 10 }}>
+    <Stack sx={{ pt: laptop?5:10 }}>
       <Container
         sx={{
           ...center,
           flexDirection: "column",
-          boxShadow: "0px 0px 5px #2b2b81",
+          boxShadow: laptop?"":"0px 0px 5px #2b2b81",
           borderRadius: 5,
-          p: 4,
+          p: isMobile?1:4,
         }}
       >
         <Typography
@@ -31,24 +34,24 @@ const ContactPage = () => {
           sx={{
             textAlign: "center",
             color: "text.light",
-            width: { xs: "100%", sm: "80%", md: "60%" },
+            width: { xs: "100%", sm: "60%", md: "50%" },
           }}
         >
           We’d love to hear from you! Whether you have a question, need support,
-          or want to learn more about our services — our team is here to help.
-          Fill out the form, and we’ll get back to you shortly.
+          or want to learn more about our services.
         </Typography>
-        <Grid container sx={{ width: "100%", mt: 3 }}>
+        <Grid container sx={{ width: "100%", mt: 5 }}>
           <Grid
             size={{ xs: 12, sm: 12, md: 5 }}
-            sx={{p:2,bgcolor:'transparent' }}
+            sx={{p:isMobile?1:2,bgcolor:'transparent',order:{xs:2,sm:2,md:1,} }}
           >
             {companyInfo.map((item) => (
               <React.Fragment key={item.id}>
                 <Card
                   sx={{
-                    p:1,
+                    cursor:'pointer',
                     boxShadow:'none',
+                    py:1,
                     border:'none',
                    bgcolor:'transparent',
                     ...flexStart,
@@ -59,10 +62,11 @@ const ContactPage = () => {
                     {item.value}
                   </Typography>
                 </Card>
+                <Divider sx={{borderColor:'#2b2b81'}}/>
               </React.Fragment>
             ))}
           </Grid>
-          <Grid size={{ xs: 12, sm: 12, md: 7 }}>
+          <Grid size={{ xs: 12, sm: 12, md: 7 }} sx={{order:{xs:1,sm:1,md:2}}}>
             <InputForm />
           </Grid>
         </Grid>

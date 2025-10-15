@@ -5,33 +5,45 @@ import {
   Container,
   Grid,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import { achievementData } from "../data/aboutAchievementData";
 import { center } from "../styles/flexStyles";
 
 const AboutSection = () => {
+  const isTablet = useMediaQuery("(max-width:850px)");
+
+  const isMobile = useMediaQuery("(max-width:500px)");
+  const smallMobile = useMediaQuery("(max-width:450px)");
+  
+
   return (
-    <Container sx={{ mt: 10, mb: 10, ...center, flexDirection: "column" }}>
-      <Typography
-        gutterBottom
-        variant="h3"
-        sx={{ fontWeight: 700, textAlign: "center" }}
-      >
-        About Us
-      </Typography>
-      <Typography
-        variant="body2"
-        sx={{ width: "70%", textAlign: "center", mb: 5 }}
-      >
-        We are dedicated to connecting people with reliable local services that
-        simplify everyday life. Our mission is to make access to trusted
-        professionals easier, faster, and more transparent for everyone.
-      </Typography>
+    <Container sx={{ mt: 8, mb: 10, ...center, flexDirection: "column" }}>
+      <Box sx={{ p: 1, ...center, flexDirection: "column" }}>
+        <Typography
+          
+          variant={isMobile?"h4":"h3"}
+          sx={{ fontWeight: 700, textAlign: "center" }}
+        >
+          About Us
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            width: isTablet ? "100%" : "80%",
+            textAlign: "center",
+            mb: 5,
+          }}
+        >
+          We are dedicated to connecting people with reliable local services
+          that simplify everyday life. 
+        </Typography>
+      </Box>
       <Grid container rowSpacing={3} columnSpacing={4}>
         <Grid
           size={{ xs: 12, sm: 12, md: 7 }}
-          sx={{ boxShadow: "0px 0px 5px black", p: 5, borderRadius: 2 }}
+          sx={{ boxShadow: "0px 0px 5px black", p:smallMobile?2: 5, borderRadius: 2 }}
         >
           <Typography
             gutterBottom
@@ -45,7 +57,7 @@ const AboutSection = () => {
             How it started
           </Typography>
           <Typography
-            variant="h2"
+            variant={smallMobile?"h4":isTablet?"h3": "h2"}
             sx={{
               mt: 2.5,
               fontWeight: 700,
@@ -57,7 +69,7 @@ const AboutSection = () => {
             Your Trusted Partner{" "}
             <Typography
               component="span"
-              variant="h2"
+            variant={smallMobile?"h4":isTablet?"h3": "h2"}
               sx={{ fontWeight: 700, color: "primary.main" }}
             >
               {" "}
@@ -95,7 +107,7 @@ const AboutSection = () => {
             />
             <Grid container columnSpacing={2} rowSpacing={1} sx={{ mt: 3 }}>
               {achievementData.map((item) => (
-                <Grid size={{ xs: 12, sm: 12, md: 6 }}>
+                <Grid size={{ xs: 12, sm: 6, md: 6 }}>
                   <Card
                     key={item.id}
                     sx={{
