@@ -14,7 +14,7 @@ const CustomSlider = ({ useIn }) => {
   const minLaptop = useMediaQuery("(max-width:1082px)");
   const isTablet = useMediaQuery("(max-width:700px)");
   const isMobile = useMediaQuery("(max-width:599px)");
-  const smallMobile = useMediaQuery("(max-width:405px)");
+  // const smallMobile = useMediaQuery("(max-width:405px)");
   const otherPhone = useMediaQuery("(max-width:463px)");
   const service = useIn === "service";
   const aboutService = useIn === "aboutService";
@@ -24,9 +24,9 @@ const CustomSlider = ({ useIn }) => {
     service || aboutService
       ? {
           320: { slidesPerView: 1 },
-          600: { slidesPerView: 1 },
-          960: { slidesPerView: aboutService?2:3 },
-          1063:{slidesPerView:aboutService?2:3},
+          700: { slidesPerView: 2 },
+          960: { slidesPerView: aboutService ? 2 : 3 },
+          1063: { slidesPerView: aboutService ? 2 : 3 },
           1280: { slidesPerView: 3 },
         }
       : {
@@ -38,7 +38,7 @@ const CustomSlider = ({ useIn }) => {
   return (
     <Container
       maxWidth="xl"
-      sx={{ py: 5, height:service?smallMobile?"50vh":"40vh": review ? "60vh" : aboutService ? "70vh" : "auto" }}
+      sx={{ py: 5, display: "flex", flexWrap: "wrap",  }}
     >
       <Swiper
         className="customSlider"
@@ -55,7 +55,7 @@ const CustomSlider = ({ useIn }) => {
         slidesPerView={service || aboutService ? 3.5 : 2}
         navigation
         autoplay={
-          service 
+          service
             ? {
                 delay: 2500,
                 disableOnInteraction: false,
@@ -70,19 +70,19 @@ const CustomSlider = ({ useIn }) => {
         }}
         style={{
           padding:
-            service || review ||aboutService?
-            otherPhone?"0px"
-              :isMobile
+            service || review || aboutService
+              ? otherPhone
+                ? "0px"
+                : isMobile
                 ? "0px 20px"
                 : isTablet
                 ? "0px 0px"
                 : minLaptop
                 ? "0px 20px"
-                
                 : "0px 50px "
               : "10px 70px",
-          height: "100%",
-
+          flex: "1 1 300px",
+          display: "flex",
         }}
         breakpoints={breakpoints}
       >

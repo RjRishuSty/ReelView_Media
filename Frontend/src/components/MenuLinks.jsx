@@ -42,6 +42,7 @@ const MenuLinks = ({ scrolled, useIn, closeSidebar }) => {
             }}
             onClick={() => {
             if (useIn === "sidebar" && closeSidebar) closeSidebar();
+             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           >
             {item.name}
