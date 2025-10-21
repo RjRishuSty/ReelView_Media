@@ -3,21 +3,14 @@ import React from "react";
 
 const Logo = ({ scrolled,useIn }) => {
   const footer = useIn === 'footer';
+  const loginPage = useIn === 'login';
   return (
     <Typography
-      variant="h5"
+      variant={loginPage?"h4":"h5"}
       className=" uppercase"
-      sx={{ color: scrolled ? "primary.main" :footer?"#000": "#fff", fontWeight: 800 }}
+      sx={{ color: scrolled ? "primary.main" :footer?"#000":loginPage?"primary.main": "#fff", fontWeight: 800 }}
     >
-      Reelview{" "}
-      <Typography
-        component="span"
-        variant="h5"
-        className="uppercase"
-        sx={{ color: scrolled ? "primary.main" :footer?"#000": "#fff", fontWeight: 800 }}
-      >
-        Media
-      </Typography>
+      Reelview Media
     </Typography>
   );
 };

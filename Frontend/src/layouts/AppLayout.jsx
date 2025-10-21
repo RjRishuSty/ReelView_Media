@@ -1,14 +1,22 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 const AppLayout = () => {
+  const location = useLocation();
+  const logInPage = location.pathname === "/login";
   return (
     <React.Fragment>
-      <Header />
-      <Outlet />
-      <Footer />
+      {logInPage ? (
+        <Outlet />
+      ) : (
+        <>
+          <Header />
+          <Outlet />
+          <Footer />
+        </>
+      )}
     </React.Fragment>
   );
 };
